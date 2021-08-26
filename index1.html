@@ -33,6 +33,24 @@
             }
         }
 
+        // add mock db call
+        function frnd() {
+            return {
+                name: 'Buddy',
+                knowJS: true,
+                favLib: 'Knockoutjs',
+                isWierd: false
+            }
+        }
+
+        // convert the value from db - JSON to observable
+        function MapFriend(frnd) {
+            var map = ko.mapping.fromJS(frnd);
+            obj.removeFriend = function () {
+                map.friends.remove(map);
+            }
+        }
+
         var obj = {
             firstName: ko.observable('Adithya'),
             lastName: ko.observable('Vijay'),
