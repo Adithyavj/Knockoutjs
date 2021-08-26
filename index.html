@@ -51,6 +51,10 @@
         obj.fullName = ko.computed(function () {
             return obj.firstName() + obj.lastName();
         })
+        obj.firstName.subscribe(function (value) {
+            console.log('firstName value changed');
+            console.log('New Value is',value);
+        })
         ko.applyBindings(obj);
     </script>
 </body>
