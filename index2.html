@@ -9,16 +9,30 @@
 </head>
 
 <body>
+    <style>
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .white {
+            color: white;
+        }
+    </style>
     <p>Friends: (<span data-bind="text:friends().length"></span>)</p>
     <ul data-bind="foreach:friends">
-        <li>
+        <li data-bind="css:styleFriend">
             <span data-bind="text:name"></span>
             <input type="checkbox" data-bind="checked:knowJS">
             <input type="text" data-bind="value:favLib,visible:knowJS">
-            <button data-bind="click:removeFriend">X</button>
+            <input type="text" data-bind="value:noLib,visible:knowJS">
+            <button style="cursor: pointer;" data-bind="click:removeFriend">X</button>
         </li>
     </ul>
-    <button data-bind="click:addFriend,enable:friends().length<5">Add Friend</button>
+    <button style="cursor: pointer;" data-bind="click:addFriend,enable:friends().length<5">Add Friend</button>
 
     <script src="knockout-3.5.1.js" type="text/javascript"></script>
     <script src="knockout.mapping-2.4.1.js" type="text/javascript"></script>

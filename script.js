@@ -4,7 +4,8 @@ function Frnd() {
         name: 'Buddy',
         knowJS: true,
         favLib: 'Knockoutjs',
-        isWierd: false
+        isWierd: false,
+        noLib: 3
     }
 }
 
@@ -14,6 +15,13 @@ function Friend(frnd) {
     map.removeFriend = function () {
         obj.friends.remove(map);
     }
+    map.styleFriend = ko.computed(function () {
+        var lib = map.noLib();
+        if (lib > 35) map.removeFriend();
+        if (lib > 25) return 'white';
+        if (lib > 10) return 'red';
+        if (lib > 5) return 'green';
+    })
     return map;
 }
 
