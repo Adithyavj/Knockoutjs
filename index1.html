@@ -15,9 +15,11 @@
             <span data-bind="text:name"></span>
             <input type="checkbox" data-bind="checked:knowJS">
             <input type="text" data-bind="value:favLib,visible:knowJS">
+            <button data-bind="click:removeFriend">Remove</button>
         </li>
     </ul>
     <button data-bind="click:addFriend">Add Friend</button>
+    <button data-bind="click:removeFriend">Remove Friend</button>
     <!-- Scripts -->
     <script src="knockout-3.5.1.js" type="text/javascript"></script>
     <script>
@@ -26,6 +28,9 @@
             this.name = name;
             this.knowJS = ko.observable(false);
             this.favLib = ko.observable('');
+            this.removeFriend = function () {
+                obj.friends.remove(this);
+            }
         }
 
         var obj = {
